@@ -1,32 +1,54 @@
 #Báo cáo về Ubuntu 16.04 64 bit
 #Mục lục
-* [1. Cài đặt](#cai_dat)
-* [2. Thêm HDD](#them_hdd)
-* [3. Thêm card mạng, thiết lập ip động, tĩnh.](#card_mang)
-	* [3.1 Thêm card mạng trong vmware](#them_card_mang)
-	* [3.2 Thiết lập ip động - tĩnh](#thiet_lap_ip)
-* [4. SSH - Cài đặt SSH](#ssh)
-	* [4.1: Giới thiệu về SSH](#gioi_thieu_ssh)
-	* [4.2: Cài đặt SSH](#cai_dat_ssh)
+
+* [1. Giới thiệu về Ubuntu 16.04](#gioi_thieu)
+* [2. Cài đặt](#cai_dat)
+* [3. Thêm HDD](#them_hdd)
+* [4. Thêm card mạng, thiết lập ip động, tĩnh.](#card_mang)
+	* [4.1 Thêm card mạng trong vmware](#them_card_mang)
+	* [4.2 Thiết lập ip động - tĩnh](#thiet_lap_ip)
+* [5. SSH - Cài đặt SSH](#ssh)
+	* [5.1: Giới thiệu về SSH](#gioi_thieu_ssh)
+	* [5.2: Cài đặt SSH](#cai_dat_ssh)
+
+
+<a href="gioi_thieu"></a>
+##1. Giới thiệu về Ubuntu 16.04 server
+
+
+* Ubuntu 16.04 (Xenial Xerus) server vừa phát hành vào ngày 21/4/2016, đây là phiên bản LTS (Long Term Support), và được hỗ trợ từ Canonical trong vòng 5 năm, đến tháng 4/2021.
+* Ubuntu 16.04 được xây dưng trên Linux Kernels 4.4, phát hành với tháng 1 năm 2016.
+* `SSH`: Ubuntu 16.04 mặc định sử dụng OpenSSH 7.2p2 (which disables the SSH version 1 protocol, and disallows the use of DSA (ssh-dss) keys).
+* `PHP 7`: Ubuntu 16.04's mặc định sử dụng php phiên bản v7.0. 
+* `Python`: Ubuntu 16.04 mặc định được cài với Python 3.5.1 và bộ thư viện python3 binary. Nếu bạn muốn sử dụng Python 2, hãy dùng câu lệnh dưới dấy
+```sh
+    sudo apt-get install python
+```
+
+
 
 <a href="cai_dat"></a>
-##1. Cài đặt
+##2. Cài đặt
 * Các bạn có thể tải về file iso hệ điều hành Ubuntu 16.04 64bit tại đường dẫn 
 http://www.ubuntu.com/download/server
+
+hoặc
+http://releases.ubuntu.com/16.04/
 
 * Tiếp theo, các bạn tiến hành cài đặt hệ điều hành Ubuntu lên máy ảo với các bước tương tự ở đây
 https://github.com/lethanhlinh247/thuctap_vnpt_cloud/blob/master/install_ubuntu_server.md
 
 <a href="them_hdd"></a>
-##2. Thêm hdd
+##3. Thêm hdd
 * Chọn máy ảo cần thêm, chọn `Edit virtual machine settings`, tiếp tục chọn `Add` và chọn `Hard Disk`.
 
 ![](http://i.imgur.com/E0C2wy1.png)
 
 * Tiếp theo, ta chọn chuẩn ổ đĩa:
-	* IDE
-	* SCSI
-	* SATA
+	* IDE (Integrated Drive Electronics): Tốc độ truyền tải dữ liệu tối đa là 100 MB/giây
+	* SCSI (Small Computer System Interface): thực chất là 1 thẻ giao diện dùng để kết nối các thiết bị phần cứng trong và ngoài PC, thường được dùng trong các máy chủ.
+	* SATA: Tốc độ truyền tải dữ liệu tối đa lên đến 150 - 300 MB/giây. 
+
 * Tiếp theo, các tùy chọn disk:
 	* Create a new virtual disk: Tạo 1 ổ đĩa ảo mới.
 	* Use an existing virtual disk: Sử dụng 1 ổ đĩa ảo đã tồn tại.
@@ -50,14 +72,14 @@ Kết quả:
 ##3. Thêm card mạng, thiết lập ip động, tĩnh.
 
 <a href="them_card_mang"></a>
-###3.1 Thêm card mạng trong vmware
+###4.1 Thêm card mạng trong vmware
 
 * Chi tiết về card mạng trong vmware bạn có thể đọc ở đây: 
 https://github.com/lethanhlinh247/thuctap_vnpt_cloud/blob/master/vmware_network.md
 
 
 <a href="thiet_lap_ip"></a>
-###3.2 Thiết lập ip động - tĩnh: Sửa file interfaces: `/etc/network/interfaces`
+###4.2 Thiết lập ip động - tĩnh: Sửa file interfaces: `/etc/network/interfaces`
 
 * Thiết lập ip động
 ```sh
@@ -94,10 +116,10 @@ netmask 255.255.255.0
 
 
 <a href="ssh"></a>
-##4. SSH - Cài đặt SSH
+##5. SSH - Cài đặt SSH
 
 <a href="gioi_thieu_ssh"></a>
-###4.1: Giới thiệu về SSH
+###5.1: Giới thiệu về SSH
 * SSH (Secure Shell) là một giao thức mạng dùng để thiết lập kết nối mạng một cách bảo mật.
 * SSH hoạt động ở lớp trên trong mô hình phân lớp TCP/IP.
 * Mỗi khi dữ liệu được gửi bởi một máy tính vào mạng, SSH tự động mã hoá nó. Khi dữ liệu được nhận vào, SSH tự động giải mã nó.
@@ -107,7 +129,7 @@ netmask 255.255.255.0
 * Chi tiết về giao thức SSH các bạn có thể xem ở đây: https://github.com/cosy294/ksec-training/blob/master/ssh%20-%20ssh%20server%20on%20ubuntu.md
 
 <a href="cai_dat_ssh"></a>
-###4.2: Cài đặt SSH
+###5.2: Cài đặt SSH
 * Lệnh cài đặt
 ```sh
 apt-get install -y ssh
